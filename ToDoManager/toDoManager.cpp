@@ -13,10 +13,12 @@
 
 using namespace std;
 
+void free() {}
+
 ToDoManager::ToDoManager() {
-	_commands["add"]  = CMD_ADD;
-	_commands["list"] = CMD_LIST;
-	_commands["help"] = CMD_HELP;
+	_commands["add"]  = &ToDoManager::AddItem;
+	_commands["list"] = &ToDoManager::ListItems;
+	_commands["help"] = &ToDoManager::ShowHelp;
 	
 	ShowHelp();
 }
@@ -38,23 +40,12 @@ void ToDoManager::ProcessLoop() {
 }
 
 void ToDoManager::ProcessCommand(string command) {
-	switch (_commands[command]) {
-		case CMD_ADD:
-			AddItem();
-			break;
-
-		case CMD_LIST:
-			ListItems();
-			break;
-			
-		case CMD_HELP:
-			ShowHelp();
-			break;
-			
-		default:
-			cout << "Wrong command!" << endl;
-			break;
+	CommandPointer commandHandler = _commands[command];
+	if (commandHandler == NULL) {
+		cout << "Wrong command!" << endl;
+		return;
 	}
+	(this->*commandHandler)();
 }
 
 void ToDoManager::ShowHelp() {

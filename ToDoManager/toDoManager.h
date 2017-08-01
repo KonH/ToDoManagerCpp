@@ -16,17 +16,14 @@
 
 using namespace std;
 
-#define CMD_ADD  1
-#define CMD_LIST 2
-#define CMD_HELP 3
-
 class ToDoManager {
 public:
 	ToDoManager();
 	~ToDoManager();
 	void ProcessLoop();
 private:
-	map<string, int> _commands;
+	typedef void (ToDoManager::* CommandPointer)();
+	map<string, CommandPointer> _commands;
 	vector<ToDoItem> _items;
 	void ProcessCommand(string command);
 	void ShowHelp();
