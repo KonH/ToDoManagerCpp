@@ -39,33 +39,37 @@ void ToDoManager::ProcessLoop() {
 	cout << "End of work" << endl;
 }
 
-void ToDoManager::ProcessCommand(string command) {
-	CommandPointer commandHandler = _commands[command];
+void ToDoManager::ProcessCommand(string fullLine) {
+	string cmd;
+	string content;
+	tie(cmd, content) = FindCommandData(fullLine);
+	CommandPointer commandHandler = _commands[cmd];
 	if (commandHandler == NULL) {
 		cout << "Wrong command!" << endl;
 		return;
 	}
-	(this->*commandHandler)();
+	(this->*commandHandler)(content);
 }
 
-void ToDoManager::ShowHelp() {
+void ToDoManager::ShowHelp(string arg) {
 	cout << "Commands:" << endl;
 	for (auto it = _commands.begin(); it != _commands.end(); it++) {
 		cout << "\t" << it->first << endl;
 	}
 }
 
-void ToDoManager::AddItem() {
-	string newName;
-	cout << "Insert new item:" << endl;
-	getline(cin, newName);
+void ToDoManager::AddItem(string itemName) {
+	if (itemName.empty()) {
+		cout << "Item name is required!" << endl;
+		return;
+	}
 	int id = FindNextId();
-	ToDoItem newItem(id, newName);
+	ToDoItem newItem(id, itemName);
 	_items.push_back(newItem);
 	cout << "New item: '" << newItem.ToString() << "'" << endl;
 }
 
-void ToDoManager::ListItems() {
+void ToDoManager::ListItems(string arg) {
 	cout << "Items: " << to_string(_items.size()) << endl;
 	for (auto it = _items.begin(); it != _items.end(); it++) {
 		cout << "\t'" << it->ToString() << "'" << endl;
@@ -78,4 +82,23 @@ int ToDoManager::FindNextId() {
 		id = it->id >= id ? it->id + 1 : id;
 	}
 	return id;
+}
+
+tuple<string, string> ToDoManager::FindCommandData(string fullLine) {
+	string cmd;
+	string content;
+	bool isCommandDone = false;
+	for (int i = 0; i < fullLine.length(); i++ ) {
+		char c = fullLine[i];
+		if(!isCommandDone) {
+			if(c == ' ') {
+				isCommandDone = true;
+				continue;
+			}
+			cmd += c;
+		} else {
+			content += c;
+		}
+	}
+	return make_tuple(cmd, content);
 }

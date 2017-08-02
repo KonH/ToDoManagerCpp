@@ -22,14 +22,15 @@ public:
 	~ToDoManager();
 	void ProcessLoop();
 private:
-	typedef void (ToDoManager::* CommandPointer)();
+	typedef void (ToDoManager::* CommandPointer)(string);
 	map<string, CommandPointer> _commands;
 	vector<ToDoItem> _items;
-	void ProcessCommand(string command);
-	void ShowHelp();
-	void AddItem();
-	void ListItems();
+	void ProcessCommand(string fullLine);
+	void ShowHelp(string arg = "");
+	void AddItem(string arg);
+	void ListItems(string arg = "");
 	int FindNextId();
+	tuple<string, string> FindCommandData(string fullLine);
 };
 
 #endif /* toDoManager_h */
