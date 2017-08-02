@@ -8,6 +8,11 @@
 
 #include "toDoItem.h"
 
-ToDoItem::ToDoItem(string itemName) {
+ToDoItem::ToDoItem(int itemId, string itemName) {
+	id = itemId;
 	name = itemName;
+}
+
+string ToDoItem::ToString() {
+	return "[" + to_string(id) + "] " + name + " (" + (done ? "done" : "todo") + ")";
 }

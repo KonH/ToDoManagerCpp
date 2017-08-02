@@ -29,6 +29,7 @@ private:
 	void ShowHelp();
 	void AddItem();
 	void ListItems();
+	int FindNextId();
 };
 
 #endif /* toDoManager_h */

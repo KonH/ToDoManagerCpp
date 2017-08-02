@@ -59,14 +59,23 @@ void ToDoManager::AddItem() {
 	string newName;
 	cout << "Insert new item:" << endl;
 	getline(cin, newName);
-	ToDoItem newItem(newName);
+	int id = FindNextId();
+	ToDoItem newItem(id, newName);
 	_items.push_back(newItem);
-	cout << "New item: '" << newItem.name << "'" << endl;
+	cout << "New item: '" << newItem.ToString() << "'" << endl;
 }
 
 void ToDoManager::ListItems() {
 	cout << "Items: " << to_string(_items.size()) << endl;
 	for (auto it = _items.begin(); it != _items.end(); it++) {
-		cout << "\t'" << it->name << "'" << endl;
+		cout << "\t'" << it->ToString() << "'" << endl;
 	}
+}
+
+int ToDoManager::FindNextId() {
+	int id = 1;
+	for (auto it = _items.begin(); it != _items.end(); it++) {
+		id = it->id >= id ? it->id + 1 : id;
+	}
+	return id;
 }

@@ -14,8 +14,11 @@
 using namespace std;
 
 struct ToDoItem {
+	int id;
 	string name;
-	ToDoItem(string itemName);
+	bool done;
+	ToDoItem(int id, string itemName);
+	string ToString();
 };
 
 #endif /* toDoItem_h */
