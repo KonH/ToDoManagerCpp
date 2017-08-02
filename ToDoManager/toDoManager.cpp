@@ -20,6 +20,8 @@ ToDoManager::ToDoManager() {
 	_commands["rm"]   = &ToDoManager::RemoveItem;
 	_commands["list"] = &ToDoManager::ListItems;
 	_commands["help"] = &ToDoManager::ShowHelp;
+	_commands["todo"] = &ToDoManager::MarkTodo;
+	_commands["done"] = &ToDoManager::MarkDone;
 	
 	ShowHelp();
 }
@@ -70,16 +72,23 @@ void ToDoManager::AddItem(string itemName) {
 	cout << "New item: '" << newItem.ToString() << "'" << endl;
 }
 
-void ToDoManager::RemoveItem(string itemIdStr) {
+int FindItemId(string itemIdStr) {
 	if (itemIdStr.empty()) {
 		cout << "Item id is required!" << endl;
-		return;
+		return -1;
 	}
 	int itemId = -1;
 	try {
 		itemId = stoi(itemIdStr);
 	} catch(const exception &e) {
 		cout << "Item id is wrong: " << e.what() << endl;
+	}
+	return itemId;
+}
+
+void ToDoManager::RemoveItem(string itemIdStr) {
+	int itemId = FindItemId(itemIdStr);
+	if (itemId < 0) {
 		return;
 	}
 	bool result = TryRemoveItem(itemId);
@@ -98,6 +107,37 @@ bool ToDoManager::TryRemoveItem(int id) {
 		}
 	}
 	return false;
+}
+
+void ToDoManager::MarkTodo(string arg) {
+	SetStatus(arg, false);
+}
+
+void ToDoManager::MarkDone(string arg) {
+	SetStatus(arg, true);
+}
+
+ToDoItem* ToDoManager::FindItemById(int id) {
+	for (auto it = _items.begin(); it != _items.end(); it++) {
+		if (it->id == id) {
+			return &(*it);
+		}
+	}
+	return NULL;
+}
+
+void ToDoManager::SetStatus(string itemIdStr, bool status) {
+	int itemId = FindItemId(itemIdStr);
+	if (itemId < 0) {
+		return;
+	}
+	ToDoItem* item = FindItemById(itemId);
+	if(item != NULL) {
+		item->done = status;
+		cout << item->ToString() << endl;
+	} else {
+		cout << "Item not found!";
+	}
 }
 
 void ToDoManager::ListItems(string arg) {

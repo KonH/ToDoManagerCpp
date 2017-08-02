@@ -31,6 +31,10 @@ private:
 	void RemoveItem(string arg);
 	bool TryRemoveItem(int id);
 	void ListItems(string arg = "");
+	void MarkTodo(string arg);
+	void MarkDone(string arg);
+	void SetStatus(string arg, bool status);
+	ToDoItem* FindItemById(int id);
 	int FindNextId();
 	tuple<string, string> FindCommandData(string fullLine);
 };
