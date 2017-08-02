@@ -17,6 +17,7 @@ void free() {}
 
 ToDoManager::ToDoManager() {
 	_commands["add"]  = &ToDoManager::AddItem;
+	_commands["rm"]   = &ToDoManager::RemoveItem;
 	_commands["list"] = &ToDoManager::ListItems;
 	_commands["help"] = &ToDoManager::ShowHelp;
 	
@@ -67,6 +68,36 @@ void ToDoManager::AddItem(string itemName) {
 	ToDoItem newItem(id, itemName);
 	_items.push_back(newItem);
 	cout << "New item: '" << newItem.ToString() << "'" << endl;
+}
+
+void ToDoManager::RemoveItem(string itemIdStr) {
+	if (itemIdStr.empty()) {
+		cout << "Item id is required!" << endl;
+		return;
+	}
+	int itemId = -1;
+	try {
+		itemId = stoi(itemIdStr);
+	} catch(const exception &e) {
+		cout << "Item id is wrong: " << e.what() << endl;
+		return;
+	}
+	bool result = TryRemoveItem(itemId);
+	if (result) {
+		cout << "Item removed." << endl;
+	} else {
+		cout << "Item not found!" << endl;
+	}
+}
+
+bool ToDoManager::TryRemoveItem(int id) {
+	for (auto it = _items.begin(); it != _items.end(); it++) {
+		if (it->id == id) {
+			_items.erase(it);
+			return true;
+		}
+	}
+	return false;
 }
 
 void ToDoManager::ListItems(string arg) {

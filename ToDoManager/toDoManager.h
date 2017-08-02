@@ -28,6 +28,8 @@ private:
 	void ProcessCommand(string fullLine);
 	void ShowHelp(string arg = "");
 	void AddItem(string arg);
+	void RemoveItem(string arg);
+	bool TryRemoveItem(int id);
 	void ListItems(string arg = "");
 	int FindNextId();
 	tuple<string, string> FindCommandData(string fullLine);
