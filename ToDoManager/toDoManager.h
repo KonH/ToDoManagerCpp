@@ -25,18 +25,26 @@ private:
 	typedef void (ToDoManager::* CommandPointer)(string);
 	map<string, CommandPointer> _commands;
 	vector<ToDoItem> _items;
+	
+	// Command handling
+	tuple<string, string> FindCommandData(string fullLine);
 	void ProcessCommand(string fullLine);
+	
+	// Utility
+	int FindItemId(string itemIdStr);
+	ToDoItem* FindItemById(int id);
+	int FindNextId();
+	bool TryRemoveItem(int id);
+	void SetStatus(string arg, bool status);
+	
+	// Commands
 	void ShowHelp(string arg = "");
 	void AddItem(string arg);
 	void RemoveItem(string arg);
-	bool TryRemoveItem(int id);
 	void ListItems(string arg = "");
 	void MarkTodo(string arg);
 	void MarkDone(string arg);
-	void SetStatus(string arg, bool status);
-	ToDoItem* FindItemById(int id);
-	int FindNextId();
-	tuple<string, string> FindCommandData(string fullLine);
+	void Clear(string arg);
 };
 
 #endif /* toDoManager_h */
