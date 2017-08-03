@@ -30,7 +30,7 @@ vector<ToDoItem> ToDoDatabase::Load(string content) {
 			if (accumLines.size() == 3) {
 				int id = stoi(accumLines[0]);
 				string name = accumLines[1];
-				bool done = accumLines[2][0];
+				bool done = (accumLines[2][0] == '1');
 				ToDoItem newItem(id, name);
 				newItem.done = done;
 				items.push_back(newItem);
@@ -44,7 +44,7 @@ vector<ToDoItem> ToDoDatabase::Load(string content) {
 string ToDoDatabase::Save(vector<ToDoItem> items) {
 	stringstream ss;
 	for (auto it = items.begin(); it != items.end(); it++) {
-		ss << it->id << '\n' << it->name << '\n' << it->done << '\n';
+		ss << it->id << '\n' << it->name << '\n' << (it->done ? '1' : '0') << '\n';
 	}
 	return ss.str();
 }

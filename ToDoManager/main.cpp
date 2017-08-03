@@ -10,17 +10,17 @@
 
 #include "toDoManager.h"
 #include "toDoDatabase.h"
+#include "toDoFileDatabase.h"
 
 int main(int argc, const char * argv[]) {
 	ToDoDatabase db;
-	vector<ToDoItem> items;
+	ToDoFileDatabase fileDb(db, "data");
+	vector<ToDoItem> items = fileDb.Load();
+	
 	ToDoManager manager(items);
 	manager.ProcessLoop();
-	string content = db.Save(manager.GetItems());
 	
-	cout << "\"" << content << "\"" << endl;
-	ToDoManager manager2(db.Load(content));
-	manager.ProcessLoop();
+	fileDb.Save(manager.GetItems());
 	
 	return 0;
 }
