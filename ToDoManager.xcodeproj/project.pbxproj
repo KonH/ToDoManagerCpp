@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C0319721F33556000718430 /* toDoDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0319701F33556000718430 /* toDoDatabase.cpp */; };
 		7CD8EDE41F30B3110078FD2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8EDE31F30B3110078FD2F /* main.cpp */; };
 		7CD8EDEC1F30B8F50078FD2F /* toDoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8EDEB1F30B8F50078FD2F /* toDoManager.cpp */; };
 		7CD8EDF01F30BEAA0078FD2F /* toDoItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8EDEE1F30BEAA0078FD2F /* toDoItem.cpp */; };
@@ -25,6 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7C0319701F33556000718430 /* toDoDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = toDoDatabase.cpp; sourceTree = "<group>"; };
+		7C0319711F33556000718430 /* toDoDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = toDoDatabase.h; sourceTree = "<group>"; };
 		7CD8EDE01F30B3110078FD2F /* ToDoManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ToDoManager; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD8EDE31F30B3110078FD2F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		7CD8EDEA1F30B8D20078FD2F /* toDoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toDoManager.h; sourceTree = "<group>"; };
@@ -68,6 +71,8 @@
 				7CD8EDEB1F30B8F50078FD2F /* toDoManager.cpp */,
 				7CD8EDED1F30B9AD0078FD2F /* toDoItem.h */,
 				7CD8EDEE1F30BEAA0078FD2F /* toDoItem.cpp */,
+				7C0319701F33556000718430 /* toDoDatabase.cpp */,
+				7C0319711F33556000718430 /* toDoDatabase.h */,
 			);
 			path = ToDoManager;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C0319721F33556000718430 /* toDoDatabase.cpp in Sources */,
 				7CD8EDE41F30B3110078FD2F /* main.cpp in Sources */,
 				7CD8EDF01F30BEAA0078FD2F /* toDoItem.cpp in Sources */,
 				7CD8EDEC1F30B8F50078FD2F /* toDoManager.cpp in Sources */,
@@ -260,6 +266,7 @@
 				7CD8EDE91F30B3110078FD2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

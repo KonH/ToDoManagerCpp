@@ -18,9 +18,10 @@ using namespace std;
 
 class ToDoManager {
 public:
-	ToDoManager();
+	ToDoManager(vector<ToDoItem> items);
 	~ToDoManager();
 	void ProcessLoop();
+	vector<ToDoItem> GetItems();
 private:
 	typedef void (ToDoManager::* CommandPointer)(string);
 	map<string, CommandPointer> _commands;

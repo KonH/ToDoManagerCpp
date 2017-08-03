@@ -15,7 +15,9 @@ using namespace std;
 
 void free() {}
 
-ToDoManager::ToDoManager() {
+ToDoManager::ToDoManager(vector<ToDoItem> items) {
+	_items = items;
+	
 	_commands["add"]   = &ToDoManager::AddItem;
 	_commands["rm"]    = &ToDoManager::RemoveItem;
 	_commands["list"]  = &ToDoManager::ListItems;
@@ -28,6 +30,10 @@ ToDoManager::ToDoManager() {
 }
 
 ToDoManager::~ToDoManager() {}
+
+vector<ToDoItem> ToDoManager::GetItems() {
+	return _items;
+}
 
 // Command handling
 
