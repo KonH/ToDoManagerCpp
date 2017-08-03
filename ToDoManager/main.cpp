@@ -10,11 +10,15 @@
 
 #include "toDoManager.h"
 #include "toDoDatabase.h"
+#include "toDoEncryptedDatabase.h"
 #include "toDoFileDatabase.h"
 
 int main(int argc, const char * argv[]) {
-	ToDoDatabase db;
-	ToDoFileDatabase fileDb(db, "data");
+	cout << "Data key:" << endl;
+	string key;
+	getline(cin, key);
+	ToDoEncryptedDatabase db(key);
+	ToDoFileDatabase fileDb(&db, "data");
 	vector<ToDoItem> items = fileDb.Load();
 	
 	ToDoManager manager(items);

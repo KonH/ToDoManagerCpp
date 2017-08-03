@@ -11,7 +11,7 @@
 #include <iostream>
 #include "toDoFileDatabase.h"
 
-ToDoFileDatabase::ToDoFileDatabase(ToDoDatabase db, string fileName) {
+ToDoFileDatabase::ToDoFileDatabase(ToDoDatabase* db, string fileName) {
 	_db = db;
 	_fileName = fileName;
 }
@@ -30,11 +30,11 @@ vector<ToDoItem> ToDoFileDatabase::Load() {
 	}
 	file.close();
 	string content = ss.str();
-	return _db.Load(content);
+	return _db->Load(content);
 }
 
 void ToDoFileDatabase::Save(vector<ToDoItem> items) {
-	string content = _db.Save(items);
+	string content = _db->Save(items);
 	ofstream file(_fileName);
 	file << content;
 	file.close();

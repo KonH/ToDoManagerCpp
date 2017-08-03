@@ -36,7 +36,6 @@ vector<ToDoItem> ToDoDatabase::Load(string content) {
 				items.push_back(newItem);
 			}
 		}
-		
 	}
 	return items;
 }

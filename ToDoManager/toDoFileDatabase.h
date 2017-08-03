@@ -13,12 +13,12 @@
 
 class ToDoFileDatabase {
 public:
-	ToDoFileDatabase(ToDoDatabase db, string fileName);
+	ToDoFileDatabase(ToDoDatabase* db, string fileName);
 	~ToDoFileDatabase();
 	vector<ToDoItem> Load();
 	void Save(vector<ToDoItem> items);
 private:
-	ToDoDatabase _db;
+	ToDoDatabase* _db;
 	string _fileName;
 };
 
