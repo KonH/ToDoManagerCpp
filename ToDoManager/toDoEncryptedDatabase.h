@@ -12,18 +12,18 @@
 #include <string>
 
 #include "toDoDatabase.h"
+#include "toDoEncrypter.h"
 
 using namespace std;
 
 class ToDoEncryptedDatabase: public ToDoDatabase {
 public:
-	ToDoEncryptedDatabase(string key);
+	ToDoEncryptedDatabase(ToDoEncrypter* encrypter);
+	~ToDoEncryptedDatabase();
 	vector<ToDoItem> Load(string content);
 	string Save(vector<ToDoItem> items);
 private:
-	string _key;
-	string Encrypt(string msg);
-	string Decrypt(string msg);
+	ToDoEncrypter* _encrypter;
 };
 
 #endif /* toDoEncryptedDatabase_h */

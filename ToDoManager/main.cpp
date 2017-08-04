@@ -17,7 +17,8 @@ int main(int argc, const char * argv[]) {
 	cout << "Data key:" << endl;
 	string key;
 	getline(cin, key);
-	ToDoEncryptedDatabase db(key);
+	ToDoEncrypter encrypter(key);
+	ToDoEncryptedDatabase db(&encrypter);
 	ToDoFileDatabase fileDb(&db, "data");
 	vector<ToDoItem> items = fileDb.Load();
 	
