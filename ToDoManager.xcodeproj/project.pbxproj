@@ -10,6 +10,7 @@
 		7C0319721F33556000718430 /* toDoDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0319701F33556000718430 /* toDoDatabase.cpp */; };
 		7C0319741F33657100718430 /* toDoFileDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0319731F33657100718430 /* toDoFileDatabase.cpp */; };
 		7C0319771F336D5400718430 /* toDoEncryptedDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C0319761F336D5400718430 /* toDoEncryptedDatabase.cpp */; };
+		7C734DEA1F34A82000F4B1FA /* debug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C734DE91F34A82000F4B1FA /* debug.cpp */; };
 		7C7E375B1F349A8100A75995 /* toDoEncrypter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E375A1F349A8100A75995 /* toDoEncrypter.cpp */; };
 		7CD8EDE41F30B3110078FD2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8EDE31F30B3110078FD2F /* main.cpp */; };
 		7CD8EDEC1F30B8F50078FD2F /* toDoManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CD8EDEB1F30B8F50078FD2F /* toDoManager.cpp */; };
@@ -35,6 +36,8 @@
 		7C0319751F33659000718430 /* toDoFileDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toDoFileDatabase.h; sourceTree = "<group>"; };
 		7C0319761F336D5400718430 /* toDoEncryptedDatabase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = toDoEncryptedDatabase.cpp; sourceTree = "<group>"; };
 		7C0319781F336D6E00718430 /* toDoEncryptedDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toDoEncryptedDatabase.h; sourceTree = "<group>"; };
+		7C734DE91F34A82000F4B1FA /* debug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = debug.cpp; sourceTree = "<group>"; };
+		7C734DEB1F34A83000F4B1FA /* debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
 		7C7E375A1F349A8100A75995 /* toDoEncrypter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = toDoEncrypter.cpp; sourceTree = "<group>"; };
 		7C7E375C1F349A9200A75995 /* toDoEncrypter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = toDoEncrypter.h; sourceTree = "<group>"; };
 		7CD8EDE01F30B3110078FD2F /* ToDoManager */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ToDoManager; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +91,8 @@
 				7C0319781F336D6E00718430 /* toDoEncryptedDatabase.h */,
 				7C7E375A1F349A8100A75995 /* toDoEncrypter.cpp */,
 				7C7E375C1F349A9200A75995 /* toDoEncrypter.h */,
+				7C734DE91F34A82000F4B1FA /* debug.cpp */,
+				7C734DEB1F34A83000F4B1FA /* debug.h */,
 			);
 			path = ToDoManager;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0319721F33556000718430 /* toDoDatabase.cpp in Sources */,
+				7C734DEA1F34A82000F4B1FA /* debug.cpp in Sources */,
 				7C7E375B1F349A8100A75995 /* toDoEncrypter.cpp in Sources */,
 				7CD8EDE41F30B3110078FD2F /* main.cpp in Sources */,
 				7C0319741F33657100718430 /* toDoFileDatabase.cpp in Sources */,
