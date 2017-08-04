@@ -6,6 +6,8 @@
 //  Copyright © 2017 KonH. All rights reserved.
 //
 
+#include <sstream>
+
 #include "toDoItem.h"
 
 ToDoItem::ToDoItem(int itemId, string itemName) {
@@ -14,5 +16,7 @@ ToDoItem::ToDoItem(int itemId, string itemName) {
 }
 
 string ToDoItem::ToString() {
-	return "[" + to_string(id) + "] " + name + " (" + (done ? "done" : "todo") + ")";
+	stringstream ss;
+	ss << "[" << to_string(id) << "] " << name << " (" << (done ? "done" : "todo") << ")";
+	return ss.str();
 }
