@@ -14,8 +14,6 @@
 
 using namespace std;
 
-void free() {}
-
 ToDoManager::ToDoManager(const vector<ToDoItem>& items) {
 	DebugAddr("M.ctor(). Items: ", &items);
 	_items = items;

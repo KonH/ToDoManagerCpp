@@ -7,6 +7,7 @@
 //
 
 #include <sstream>
+
 #include "toDoDatabase.h"
 #include "debug.h"
 
@@ -32,9 +33,11 @@ vector<ToDoItem> ToDoDatabase::Load(const string& content) {
 				int id = stoi(accumLines[0]);
 				string name = accumLines[1];
 				bool done = (accumLines[2][0] == '1');
+				
 				ToDoItem newItem(id, name);
 				newItem.done = done;
 				items.push_back(newItem);
+				
 				accumLines.clear();
 			}
 		}

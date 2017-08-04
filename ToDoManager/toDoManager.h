@@ -20,6 +20,7 @@ class ToDoManager {
 public:
 	ToDoManager(const vector<ToDoItem>& items);
 	~ToDoManager();
+	
 	void ProcessLoop();
 	vector<ToDoItem>& GetItems();
 private:
