@@ -14,12 +14,15 @@
 #include "toDoFileDatabase.h"
 
 int main(int argc, const char * argv[]) {
+	cout << "Data file: " << endl;
+	string fileName;
+	getline(cin, fileName);
 	cout << "Data key:" << endl;
 	string key;
 	getline(cin, key);
 	ToDoEncrypter encrypter(key);
 	ToDoEncryptedDatabase db(&encrypter);
-	ToDoFileDatabase fileDb(&db, "data");
+	ToDoFileDatabase fileDb(&db, fileName);
 	vector<ToDoItem> items = fileDb.Load();
 	
 	ToDoManager manager(items);

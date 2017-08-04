@@ -6,7 +6,6 @@
 //  Copyright © 2017 KonH. All rights reserved.
 //
 
-#include <iostream>
 #include <sstream>
 #include "toDoDatabase.h"
 
@@ -34,6 +33,7 @@ vector<ToDoItem> ToDoDatabase::Load(string content) {
 				ToDoItem newItem(id, name);
 				newItem.done = done;
 				items.push_back(newItem);
+				accumLines.clear();
 			}
 		}
 	}
