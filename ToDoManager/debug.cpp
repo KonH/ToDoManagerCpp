@@ -12,3 +12,7 @@
 void DebugLog(string message) {
 	cout << "DEBUG: " << message << endl;
 }
+
+void DebugAddrLog(string message, const void* p) {
+	cout << "DEBUG: " << message << p << endl;
+}

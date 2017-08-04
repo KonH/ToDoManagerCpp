@@ -20,8 +20,8 @@ class ToDoDatabase {
 public:
 	ToDoDatabase();
 	~ToDoDatabase();
-	virtual vector<ToDoItem> Load(string content);
-	virtual string Save(vector<ToDoItem> items);
+	virtual vector<ToDoItem> Load(const string& content);
+	virtual string Save(const vector<ToDoItem>& items);
 };
 
 

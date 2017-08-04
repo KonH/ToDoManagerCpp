@@ -20,8 +20,8 @@ class ToDoEncryptedDatabase: public ToDoDatabase {
 public:
 	ToDoEncryptedDatabase(ToDoEncrypter* encrypter);
 	~ToDoEncryptedDatabase();
-	vector<ToDoItem> Load(string content);
-	string Save(vector<ToDoItem> items);
+	vector<ToDoItem> Load(const string& content);
+	string Save(const vector<ToDoItem>& items);
 private:
 	ToDoEncrypter* _encrypter;
 };

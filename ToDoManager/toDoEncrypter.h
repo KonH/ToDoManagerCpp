@@ -17,8 +17,8 @@ class ToDoEncrypter {
 public:
 	ToDoEncrypter(string key);
 	~ToDoEncrypter();
-	string Encrypt(string msg);
-	string Decrypt(string msg);
+	string Encrypt(const string& msg);
+	string Decrypt(const string& msg);
 private:
 	string _key;
 };

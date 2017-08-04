@@ -10,6 +10,7 @@
 #include <sstream>
 #include <iostream>
 #include "toDoFileDatabase.h"
+#include "debug.h"
 
 ToDoFileDatabase::ToDoFileDatabase(ToDoDatabase* db, string fileName) {
 	_db = db;
@@ -33,7 +34,8 @@ vector<ToDoItem> ToDoFileDatabase::Load() {
 	return _db->Load(content);
 }
 
-void ToDoFileDatabase::Save(vector<ToDoItem> items) {
+void ToDoFileDatabase::Save(const vector<ToDoItem>& items) {
+	DebugAddr("FD.Save: Items: ", &items);
 	string content = _db->Save(items);
 	ofstream file(_fileName);
 	file << content;

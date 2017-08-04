@@ -7,6 +7,7 @@
 //
 
 #include "toDoEncrypter.h"
+#include "debug.h"
 
 ToDoEncrypter::ToDoEncrypter(string key) {
 	_key = key;
@@ -14,18 +15,21 @@ ToDoEncrypter::ToDoEncrypter(string key) {
 
 ToDoEncrypter::~ToDoEncrypter() {}
 
-string ToDoEncrypter::Encrypt(string msg) {
+string ToDoEncrypter::Encrypt(const string& msg) {
+	DebugAddr("E.Encrypt. Message: ", &msg);
 	string tmp(_key);
 	while (_key.size() < msg.size()) {
 		_key += tmp;
 	}
 	
+	string newMessage;
 	for (int i = 0; i < msg.size(); ++i) {
-		msg[i] ^= _key[i];
+		newMessage += msg[i] ^ _key[i];
 	}
-	
-	return msg;
+	DebugAddr("E:Encrypt. New message: ", &newMessage);
+	return newMessage;
 }
-string ToDoEncrypter::Decrypt(string msg) {
+string ToDoEncrypter::Decrypt(const string& msg) {
+	DebugAddr("E.Decrypt. Message: ", &msg);
 	return Encrypt(msg);
 }

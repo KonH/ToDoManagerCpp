@@ -16,7 +16,7 @@ public:
 	ToDoFileDatabase(ToDoDatabase* db, string fileName);
 	~ToDoFileDatabase();
 	vector<ToDoItem> Load();
-	void Save(vector<ToDoItem> items);
+	void Save(const vector<ToDoItem>& items);
 private:
 	ToDoDatabase* _db;
 	string _fileName;

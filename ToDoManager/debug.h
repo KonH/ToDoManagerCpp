@@ -14,11 +14,14 @@
 using namespace std;
 
 void DebugLog(string message);
+void DebugAddrLog(string message, void const* p);
 
 #ifdef DEBUG
-#	define Debug(x) DebugLog(x)
+#	define Debug(x) DebugLog((x))
+#	define DebugAddr(x, y) DebugAddrLog((x), (y))
 #else
 #	define Debug(x)
+#	define DebugAddr(x, y) DebugAddrLog((x), (y))
 #endif
 
 #endif /* debug_h */

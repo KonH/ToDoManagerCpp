@@ -10,12 +10,14 @@
 #include <string>
 
 #include "toDoManager.h"
+#include "debug.h"
 
 using namespace std;
 
 void free() {}
 
-ToDoManager::ToDoManager(vector<ToDoItem> items) {
+ToDoManager::ToDoManager(const vector<ToDoItem>& items) {
+	DebugAddr("M.ctor(). Items: ", &items);
 	_items = items;
 	
 	_commands["add"]   = &ToDoManager::AddItem;
@@ -31,7 +33,8 @@ ToDoManager::ToDoManager(vector<ToDoItem> items) {
 
 ToDoManager::~ToDoManager() {}
 
-vector<ToDoItem> ToDoManager::GetItems() {
+vector<ToDoItem>& ToDoManager::GetItems() {
+	DebugAddr("M.GetItems: Items: ", &_items);
 	return _items;
 }
 
