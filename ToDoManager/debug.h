@@ -21,7 +21,7 @@ void DebugAddrLog(string message, void const* p);
 #	define DebugAddr(x, y) DebugAddrLog((x), (y))
 #else
 #	define Debug(x)
-#	define DebugAddr(x, y) DebugAddrLog((x), (y))
+#	define DebugAddr(x, y)
 #endif
 
 #endif /* debug_h */
