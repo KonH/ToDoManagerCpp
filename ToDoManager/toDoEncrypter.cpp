@@ -16,7 +16,7 @@ ToDoEncrypter::ToDoEncrypter(string key) {
 ToDoEncrypter::~ToDoEncrypter() {}
 
 string ToDoEncrypter::Encrypt(const string& msg) {
-	DebugAddr("E.Encrypt. Message: ", &msg);
+	Debug("E.Encrypt. Message: ", &msg);
 	string tmp(_key);
 	while (_key.size() < msg.size()) {
 		_key += tmp;
@@ -26,10 +26,10 @@ string ToDoEncrypter::Encrypt(const string& msg) {
 	for (int i = 0; i < msg.size(); ++i) {
 		newMessage += msg[i] ^ _key[i];
 	}
-	DebugAddr("E:Encrypt. New message: ", &newMessage);
+	Debug("E:Encrypt. New message: ", &newMessage);
 	return newMessage;
 }
 string ToDoEncrypter::Decrypt(const string& msg) {
-	DebugAddr("E.Decrypt. Message: ", &msg);
+	Debug("E.Decrypt. Message: ", &msg);
 	return Encrypt(msg);
 }

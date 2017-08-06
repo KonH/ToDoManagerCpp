@@ -36,7 +36,7 @@ vector<ToDoItem> ToDoFileDatabase::Load() {
 }
 
 void ToDoFileDatabase::Save(const vector<ToDoItem>& items) {
-	DebugAddr("FD.Save: Items: ", &items);
+	Debug("FD.Save: Items: ", &items);
 	string content = _db->Save(items);
 	ofstream file(_fileName);
 	file << content;

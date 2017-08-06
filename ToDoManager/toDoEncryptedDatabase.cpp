@@ -16,17 +16,17 @@ ToDoEncryptedDatabase::ToDoEncryptedDatabase(ToDoEncrypter* encrypter) {
 ToDoEncryptedDatabase::~ToDoEncryptedDatabase() {}
 
 vector<ToDoItem> ToDoEncryptedDatabase::Load(const string& content) {
-	DebugAddr("ED.Load. Content: ", &content);
+	Debug("ED.Load. Content: ", &content);
 	string decryptedContent = _encrypter->Decrypt(content);
-	DebugAddr("ED.Load. Decrypted content: ", &decryptedContent);
+	Debug("ED.Load. Decrypted content: ", &decryptedContent);
 	return ToDoDatabase::Load(decryptedContent);
 }
 
 string ToDoEncryptedDatabase::Save(const vector<ToDoItem>& items) {
-	DebugAddr("ED.Save: Items: ", &items);
+	Debug("ED.Save: Items: ", &items);
 	string content = ToDoDatabase::Save(items);
-	DebugAddr("ED.Save: Content: ", &content);
+	Debug("ED.Save: Content: ", &content);
 	string encryptedContent = _encrypter->Encrypt(content);
-	DebugAddr("ED.Save: Encrypted content: ", &encryptedContent);
+	Debug("ED.Save: Encrypted content: ", &encryptedContent);
 	return encryptedContent;
 }

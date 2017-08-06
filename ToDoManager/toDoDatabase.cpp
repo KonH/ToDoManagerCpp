@@ -16,7 +16,7 @@ ToDoDatabase::ToDoDatabase() {}
 ToDoDatabase::~ToDoDatabase() {}
 
 vector<ToDoItem> ToDoDatabase::Load(const string& content) {
-	DebugAddr("D:Load. Content: ", &content);
+	Debug("D:Load. Content: ", &content);
 	vector<ToDoItem> items;
 	string accumLine;
 	vector<string> accumLines;
@@ -42,12 +42,12 @@ vector<ToDoItem> ToDoDatabase::Load(const string& content) {
 			}
 		}
 	}
-	DebugAddr("D.Load. Items: ", &items);
+	Debug("D.Load. Items: ", &items);
 	return items;
 }
 
 string ToDoDatabase::Save(const vector<ToDoItem>& items) {
-	DebugAddr("D.Save. Items: ", &items);
+	Debug("D.Save. Items: ", &items);
 	stringstream ss;
 	for (auto it = items.begin(); it != items.end(); it++) {
 		ss << it->id << '\n' << it->name << '\n' << (it->done ? '1' : '0') << '\n';

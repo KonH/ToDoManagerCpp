@@ -15,7 +15,7 @@
 using namespace std;
 
 ToDoManager::ToDoManager(const vector<ToDoItem>& items) {
-	DebugAddr("M.ctor(). Items: ", &items);
+	Debug("M.ctor(). Items: ", &items);
 	_items = items;
 	
 	_commands["add"]   = &ToDoManager::AddItem;
@@ -32,7 +32,7 @@ ToDoManager::ToDoManager(const vector<ToDoItem>& items) {
 ToDoManager::~ToDoManager() {}
 
 vector<ToDoItem>& ToDoManager::GetItems() {
-	DebugAddr("M.GetItems: Items: ", &_items);
+	Debug("M.GetItems: Items: ", &_items);
 	return _items;
 }
 

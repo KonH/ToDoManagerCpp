@@ -10,18 +10,24 @@
 #define debug_h
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
-void DebugLog(string message);
-void DebugAddrLog(string message, void const* p);
+template <typename X>
+void DebugLog(X x) {
+	cout << "DEBUG: " << x << endl;
+}
+
+template<typename X, typename Y>
+void DebugLog(X x, Y y) {
+	cout << "DEBUG: " << x << y << endl;
+}
 
 #ifdef DEBUG
-#	define Debug(x) DebugLog((x))
-#	define DebugAddr(x, y) DebugAddrLog((x), (y))
+#	define Debug(...) DebugLog(__VA_ARGS__)
 #else
-#	define Debug(x)
-#	define DebugAddr(x, y)
+#	define Debug(...)
 #endif
 
 #endif /* debug_h */
