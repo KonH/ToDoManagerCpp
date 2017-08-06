@@ -49,8 +49,10 @@ vector<ToDoItem> ToDoDatabase::Load(const string& content) {
 string ToDoDatabase::Save(const vector<ToDoItem>& items) {
 	Debug("D.Save. Items: ", &items);
 	stringstream ss;
-	for (auto it = items.begin(); it != items.end(); it++) {
+	auto it = items.begin();
+	while (it != items.end()) {
 		ss << it->id << '\n' << it->name << '\n' << (it->done ? '1' : '0') << '\n';
+		it++;
 	}
 	return ss.str();
 }

@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 #include "toDoManager.h"
@@ -44,7 +45,7 @@ void ToDoManager::ProcessLoop() {
 		cout << endl;
 		cout << "Command:" << endl;
 		getline(cin, command);
-		if(command.empty()){
+		if (command.empty()) {
 			break;
 		}
 		ProcessCommand(command);
@@ -58,8 +59,8 @@ tuple<string, string> ToDoManager::FindCommandData(string fullLine) {
 	bool isCommandDone = false;
 	for (int i = 0; i < fullLine.length(); i++ ) {
 		char c = fullLine[i];
-		if(!isCommandDone) {
-			if(c == ' ') {
+		if (!isCommandDone) {
+			if (c == ' ') {
 				isCommandDone = true;
 				continue;
 			}
@@ -100,28 +101,31 @@ int ToDoManager::FindItemId(string itemIdStr) {
 }
 
 ToDoItem* ToDoManager::FindItemById(int id) {
-	for (auto it = _items.begin(); it != _items.end(); it++) {
-		if (it->id == id) {
-			return &(*it);
-		}
-	}
-	return NULL;
+	auto iter = find_if(
+		_items.begin(), _items.end(),
+		[id](ToDoItem& item) { return item.id == id; }
+	);
+	return &(*iter);
 }
 
 int ToDoManager::FindNextId() {
 	int id = 1;
-	for (auto it = _items.begin(); it != _items.end(); it++) {
-		id = it->id >= id ? it->id + 1 : id;
-	}
+	for_each(
+		_items.begin(),
+		_items.end(),
+		[&id](ToDoItem& item) { id = item.id >= id ? item.id + 1 : id; }
+	);
 	return id;
 }
 
 bool ToDoManager::TryRemoveItem(int id) {
-	for (auto it = _items.begin(); it != _items.end(); it++) {
+	auto it = _items.begin();
+	while (it != _items.end()) {
 		if (it->id == id) {
 			_items.erase(it);
 			return true;
 		}
+		it++;
 	}
 	return false;
 }
@@ -145,8 +149,10 @@ void ToDoManager::SetStatus(string itemIdStr, bool status) {
 
 void ToDoManager::ShowHelp(string arg) {
 	cout << "Commands:" << endl;
-	for (auto it = _commands.begin(); it != _commands.end(); it++) {
+	auto it = _commands.begin();
+	while (it != _commands.end()) {
 		cout << "\t" << it->first << endl;
+		it++;
 	}
 }
 
@@ -184,8 +190,10 @@ void ToDoManager::MarkDone(string arg) {
 
 void ToDoManager::ListItems(string arg) {
 	cout << "Items: " << to_string(_items.size()) << endl;
-	for (auto it = _items.begin(); it != _items.end(); it++) {
+	auto it = _items.begin();
+	while (it != _items.end()) {
 		cout << "\t'" << it->ToString() << "'" << endl;
+		it++;
 	}
 }
 
