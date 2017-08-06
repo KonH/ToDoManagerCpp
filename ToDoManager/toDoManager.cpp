@@ -101,20 +101,20 @@ int ToDoManager::FindItemId(string itemIdStr) {
 }
 
 ToDoItem* ToDoManager::FindItemById(int id) {
-	auto iter = find_if(
-		_items.begin(), _items.end(),
-		[id](ToDoItem& item) { return item.id == id; }
+	auto iter = find_if(_items.begin(), _items.end(),
+		[id](ToDoItem& item) {
+			return item.id == id;
+		}
 	);
 	return &(*iter);
 }
 
 int ToDoManager::FindNextId() {
 	int id = 1;
-	for_each(
-		_items.begin(),
-		_items.end(),
-		[&id](ToDoItem& item) { id = item.id >= id ? item.id + 1 : id; }
-	);
+	for_each(_items.begin(), _items.end(),
+		[&id](ToDoItem& item) {
+			id = item.id >= id ? item.id + 1 : id;
+		});
 	return id;
 }
 
@@ -149,11 +149,10 @@ void ToDoManager::SetStatus(string itemIdStr, bool status) {
 
 void ToDoManager::ShowHelp(string arg) {
 	cout << "Commands:" << endl;
-	auto it = _commands.begin();
-	while (it != _commands.end()) {
-		cout << "\t" << it->first << endl;
-		it++;
-	}
+	for_each(_commands.begin(), _commands.end(),
+		[](pair<const string, CommandPointer>& pair) {
+			cout << "\t" << pair.first << endl;
+		});
 }
 
 void ToDoManager::AddItem(string itemName) {
@@ -190,18 +189,17 @@ void ToDoManager::MarkDone(string arg) {
 
 void ToDoManager::ListItems(string arg) {
 	cout << "Items: " << to_string(_items.size()) << endl;
-	auto it = _items.begin();
-	while (it != _items.end()) {
-		cout << "\t'" << it->ToString() << "'" << endl;
-		it++;
-	}
+	for_each(_items.begin(), _items.end(),
+		[](ToDoItem& item) {
+			cout << "\t'" << item.ToString() << "'" << endl;
+		});
 }
 
 void ToDoManager::Clear(string arg) {
 	_items.erase(
-		remove_if(
-			_items.begin(), _items.end(),
-			[](ToDoItem item) { return item.done; }
-		),
+		remove_if(_items.begin(), _items.end(),
+			[](ToDoItem item) {
+				return item.done;
+			}),
 		_items.end());
 }
